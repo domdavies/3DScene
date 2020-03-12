@@ -1,0 +1,42 @@
+﻿  3DScene.cpp
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\3DScene.cpp(71,74): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\3DScene.cpp(71,64): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\3DScene.cpp(116,24): warning C4552: '-': result of expression not used
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\3DScene.cpp(195,15): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\3DScene.cpp(196,34): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\3DScene.cpp(197,34): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\3DScene.cpp(200,15): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\3DScene.cpp(201,34): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\3DScene.cpp(202,34): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+  BackGroundHealthBar.cpp
+  Character.cpp
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\3DScene.cpp(275,24): warning C4552: '-': result of expression not used
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\Character.cpp(43,13): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\Character.cpp(45,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\Character.cpp(46,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\Character.cpp(53,28): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\Character.cpp(54,28): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\Character.cpp(55,28): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\Character.cpp(58,23): warning C4552: '-': result of expression not used
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\Character.cpp(81,24): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+  Crypt.cpp
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\Character.cpp(85,20): warning C4018: '<': signed/unsigned mismatch
+  GLUTCallBacks.cpp
+  GraveStone.cpp
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\Crypt.cpp(49,20): warning C4018: '<': signed/unsigned mismatch
+  HealthBar.cpp
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\GraveStone.cpp(23,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\HealthBar.cpp(10,10): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\HealthBar.cpp(29,13): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+  HUDTextures.cpp
+  Main.cpp
+  MeshLoader.cpp
+  OBJLoader.cpp
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\HealthBar.cpp(31,13): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\OBJLoader.cpp(106,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\OBJLoader.cpp(118,21): warning C4018: '<': signed/unsigned mismatch
+  SceneObject.cpp
+  Texture2D.cpp
+  Generating Code...
+C:\Users\domda\Desktop\GraveYard Scene\3DScene\OBJLoader.cpp(126,21): warning C4018: '<': signed/unsigned mismatch
+  3DSCENE.vcxproj -> C:\Users\domda\Desktop\GraveYard Scene\Debug\3DSCENE.exe
