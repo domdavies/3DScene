@@ -53,13 +53,6 @@ void HelloGL::InitObjects() {
 	----------------------------------------------------------------------
 	*/
 
-	/*
-	for (int i = 0; i < 200; i++)
-	{
-		object[i] = new Cube(CubeMesh, texture, (rand() % 400 / 10.0f) - 20.0f, (rand() % 200 / 10.0f) - 10.0f, -(rand() % 1000 / 10.0f), rand() % 10 + 1);
-	}
-	*/
-
 	//store data for lilith character
 	lilith = new Character(lilithMesh, nullptr, 0, 50, 50, 0);
 
@@ -83,9 +76,9 @@ void HelloGL::InitObjects() {
 	--------------------------------------------------------------------------------
 	*/
 	//x, y, z position
-	camera->eye.x = 10.0f; camera->eye.y = 20.0f; camera->eye.z = 5.0f;
+	camera->eye.x = 0.0f; camera->eye.y = 0.0f; camera->eye.z = 0.0f;
 	//x, y, z lookat
-	camera->centre.x = 0.0f; camera->centre.y = 10.0f; camera->centre.z = 5.0f;
+	camera->centre.x = 0.0f; camera->centre.y = 0.0f; camera->centre.z = 0.0f;
 	//x, y, z rotation
 	camera->up.x = 0.0f; camera->up.y = 1.0f; camera->up.z = 0.0f;
 	/*
@@ -97,7 +90,7 @@ void HelloGL::InitObjects() {
 	angle = 0.0f;
 
 	move = 0;
-	moveCharacter = 0;
+	camDistanceFromPlayer = 20.0f;
 }
 
 void HelloGL::InitLighting() {
@@ -173,6 +166,21 @@ HelloGL::~HelloGL(void)
 	delete camera;
 }
 
+void HelloGL::CalculateCamPos(float vertDist, float horiDis) {
+	float theta = lilith->GetYRotation();
+	float offsetX = horiDis * sin(theta * M_PI / 180);
+	float offsetZ = horiDis * cos(theta * M_PI / 180);
+
+	cout << theta << endl;
+
+	camera->eye.x = lilith->GetPosition().x - offsetX;
+	camera->eye.y = lilith->GetPosition().y + vertDist;
+	camera->eye.z = lilith->GetPosition().z - offsetZ;
+
+	cout << "Lil: " << lilith->GetPosition().z << endl;
+	cout << "Cam: " << camera->eye.z << endl;
+}
+
 void HelloGL::Update()
 {
 	glLoadIdentity();
@@ -186,21 +194,25 @@ void HelloGL::Update()
 
 	lilith->Update();
 	healthBar->Update();
+	float vertDist = CalculatVericalDistance();
+	float horDist = CalculateHorizontalDistance();
+	//10, 16
+	CalculateCamPos(vertDist, horDist);
 }
 
 void HelloGL::SpecialKeys(int key, int x, int y) {
 	switch (key)
 	{
 	case GLUT_KEY_LEFT:
-		move -= 0.01;
-		camera->eye.x += .1 * sin(move);
-		camera->eye.z += .1 * cos(move);
+		//move -= 0.01;
+		//camera->eye.x += .1 * sin(move);
+		//camera->eye.z += .1 * cos(move);
 		break;
 	case GLUT_KEY_RIGHT:
-		move += 0.01;
-		camera->eye.x += .1 * sin(move);
-		camera->eye.z += .1 * cos(move);
-		cout << camera->eye.x << " " << camera->eye.z << endl;
+		//move += 0.01;
+		//camera->eye.x += .1 * sin(move);
+		//camera->eye.z += .1 * cos(move);
+		//cout << camera->eye.x << " " << camera->eye.z << endl;
 		break;
 	case GLUT_KEY_UP:
 		break;
@@ -224,11 +236,11 @@ void HelloGL::MouseButton(int button, int state, int x, int y) {
 		break;
 		//3 designates the middle mouse scroll forward
 	case 3:
-		camera->eye.z -= 0.2f;
+		//camera->eye.z -= 0.2f;
 		break;
 		//4 designates the middle mouse scroll backwards
 	case 4:
-		camera->eye.z += 0.2f;
+		//camera->eye.z += 0.2f;
 		break;
 	}
 }
@@ -238,14 +250,10 @@ void HelloGL::Keyboard(unsigned char key, int x, int y)
 	if (key == 'd')
 	{
 		lilith->TurnRight();
-		//moveCharacter += 1;
-		//lilith->SetPosition(Vector3{ moveCharacter, 50, 50 } );
 	}
 	if (key == 'a')
 	{
 		lilith->TurnLeft();
-		//moveCharacter -= 1;
-		//lilith->SetPosition(Vector3{ moveCharacter, 50, 50 } );
 	}
 
 	if (key == 'w')

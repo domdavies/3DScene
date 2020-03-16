@@ -17,6 +17,8 @@ public:
 	void TurnRight();
 	void Walk();
 	int GetHP() { return HP; };
+	float GetYRotation() { return angle; };
+	Vector3 GetPosition() { return _position; };
 private:
 	int HP;
 	float angle;

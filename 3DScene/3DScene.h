@@ -35,6 +35,10 @@ public:
 	void ResetMat();
 	void DrawString(const char* text, Vector3* position, Color* color);
 
+	float CalculateHorizontalDistance() { return (float) (camDistanceFromPlayer * cos(20 * M_PI / 180)); };
+	float CalculatVericalDistance() { return (float) (camDistanceFromPlayer * sin(20 * M_PI / 180)); };
+	void CalculateCamPos(float vertDist, float horiDis);
+
 	void MouseMove(int x, int y);
 	void MouseButton(int button, int state, int x, int y);
 	void Keyboard(unsigned char key, int x, int y);
@@ -60,6 +64,5 @@ private:
 	int xOrigin;
 	float angle;
 	float move;
-	float moveCharacter;
-	float dist;
+	float camDistanceFromPlayer;
 };
