@@ -54,7 +54,7 @@ void HelloGL::InitObjects() {
 	*/
 
 	//store data for lilith character
-	lilith = new Character(lilithMesh, nullptr, 0, 50, 50, 0);
+	lilith = new Character(lilithMesh, nullptr, 0, 50, 0, 0);
 
 	//store data for creating gravestones
 	for (int i = 0; i < 10; i++)
@@ -90,7 +90,7 @@ void HelloGL::InitObjects() {
 	angle = 0.0f;
 
 	move = 0;
-	camDistanceFromPlayer = 20.0f;
+	camDistanceFromPlayer = 40.0f;
 }
 
 void HelloGL::InitLighting() {
@@ -168,23 +168,17 @@ HelloGL::~HelloGL(void)
 
 void HelloGL::CalculateCamPos(float vertDist, float horiDis) {
 	float theta = lilith->GetYRotation();
-	float offsetX = horiDis * sin(theta * M_PI / 180);
-	float offsetZ = horiDis * cos(theta * M_PI / 180);
+	float offsetX = (float) (horiDis * sin(theta * M_PI / 180));
+	float offsetZ = (float) (horiDis * cos(theta * M_PI / 180));
 
-	cout << theta << endl;
-
-	camera->eye.x = lilith->GetPosition().x - offsetX;
-	camera->eye.y = lilith->GetPosition().y + vertDist;
-	camera->eye.z = lilith->GetPosition().z - offsetZ;
-
-	cout << "Lil: " << lilith->GetPosition().z << endl;
-	cout << "Cam: " << camera->eye.z << endl;
+	camera->eye.x = (lilith->GetPosition().x * 0.1 - offsetX);
+	camera->eye.y = lilith->GetPosition().y * 0.1 + vertDist + 5;
+	camera->eye.z = (lilith->GetPosition().z * 0.1- offsetZ);
 }
 
 void HelloGL::Update()
 {
 	glLoadIdentity();
-	gluLookAt(camera->eye.x, camera->eye.y, camera->eye.z, camera->centre.x, camera->centre.y, camera->centre.z, camera->up.x, camera->up.y, camera->up.z);
 	glutPostRedisplay();
 
 	glLightfv(GL_LIGHT0, GL_AMBIENT, &(_lightData->ambient.x));
@@ -193,11 +187,18 @@ void HelloGL::Update()
 	glLightfv(GL_LIGHT0, GL_POSITION, &(_lightPosition->x));
 
 	lilith->Update();
+	//the position of the lilith model is the position of the model without scaling, so to get the actual position (with scaling) multiply by the scale amount
+	gluLookAt(camera->eye.x, camera->eye.y, camera->eye.z, lilith->GetPosition().x * 0.1, lilith->GetPosition().y * 0.1, lilith->GetPosition().z * 0.1, camera->up.x, camera->up.y, camera->up.z);
+
 	healthBar->Update();
 	float vertDist = CalculatVericalDistance();
 	float horDist = CalculateHorizontalDistance();
 	//10, 16
 	CalculateCamPos(vertDist, horDist);
+
+	cout << "YRot" << lilith->GetYRotation() << endl;
+	cout << "Lil: " << lilith->GetPosition().z << endl;
+	cout << "Cam: " << camera->eye.z << endl;
 }
 
 void HelloGL::SpecialKeys(int key, int x, int y) {

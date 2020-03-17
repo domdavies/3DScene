@@ -19,7 +19,7 @@ public:
 	virtual void Walk();
 	virtual int GetHP();
 	virtual float GetYRotation(){ return 0; };
-	virtual Vector3 GetPosition() { return {0, 0, 0 }; };
+	virtual Vector3 GetPosition() { return {0, 50, 50 }; };
 private:
 };
 

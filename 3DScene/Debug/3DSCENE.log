@@ -2,7 +2,8 @@
 C:\Users\domda\Desktop\Github\GraveYard Scene\3DScene\3DScene\3DScene.cpp(64,74): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\domda\Desktop\Github\GraveYard Scene\3DScene\3DScene\3DScene.cpp(64,64): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\domda\Desktop\Github\GraveYard Scene\3DScene\3DScene\3DScene.cpp(109,24): warning C4552: '-': result of expression not used
-C:\Users\domda\Desktop\Github\GraveYard Scene\3DScene\3DScene\3DScene.cpp(171,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\domda\Desktop\Github\GraveYard Scene\3DScene\3DScene\3DScene.cpp(172,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\domda\Desktop\Github\GraveYard Scene\3DScene\3DScene\3DScene.cpp(283,24): warning C4552: '-': result of expression not used
+C:\Users\domda\Desktop\Github\GraveYard Scene\3DScene\3DScene\3DScene.cpp(174,49): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\domda\Desktop\Github\GraveYard Scene\3DScene\3DScene\3DScene.cpp(175,59): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\domda\Desktop\Github\GraveYard Scene\3DScene\3DScene\3DScene.cpp(176,48): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\domda\Desktop\Github\GraveYard Scene\3DScene\3DScene\3DScene.cpp(284,24): warning C4552: '-': result of expression not used
   3DSCENE.vcxproj -> C:\Users\domda\Desktop\Github\GraveYard Scene\3DScene\Debug\3DSCENE.exe
