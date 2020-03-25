@@ -18,6 +18,7 @@
 #include "HUDTextures.h"
 
 class OBJLoader;
+class Character;
 
 class HelloGL
 {
@@ -31,6 +32,7 @@ public:
 	~HelloGL(void);
 	//function used to display grapghics
 	void Display();
+	void DrawNode(SceneObject* n);
 	void Update();
 	void ResetMat();
 	void DrawString(const char* text, Vector3* position, Color* color);
@@ -47,18 +49,19 @@ private:
 	float rotation;
 	float xRot, zRot, yRot;
 	Camera* camera;
+
+	SceneObject* root;
+
 	SceneObject* crypt;
-	SceneObject* lilith;
+	Character* lilith;
 	SceneObject* graveStone[10][10];
+
 	Vector4* _lightPosition;
 	Lighting* _lightData;
 	Material* defaultMat;
+
 	HUDTextures* healthBar;
 	HUDTextures* backGroundHealthBar;
-
-	//static Vertex indexVertices[];
-	//static Vertex indexedColors[];
-	//static GLushort indices[];
 
 	float deltaAngle;
 	int xOrigin;

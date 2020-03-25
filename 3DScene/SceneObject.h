@@ -8,18 +8,18 @@ protected:
 	Mesh* _mesh;
 	Texture2D* _texture;
 public:
-	SceneObject(Mesh* mesh, Texture2D* texture);
+	SceneObject(Mesh* mesh = NULL, Texture2D* texture = NULL);
 
 	virtual ~SceneObject();
 	virtual void Update();
 	virtual void Draw();
-	virtual void SetPosition(Vector3 position);
-	virtual void TurnLeft();
-	virtual void TurnRight();
-	virtual void Walk();
-	virtual int GetHP();
-	virtual float GetYRotation(){ return 0; };
-	virtual Vector3 GetPosition() { return {0, 50, 50 }; };
+
+	void AddChild(SceneObject* s);
+	std::vector<SceneObject*>::const_iterator GetChildIteratotStart() { return children.begin(); };
+	std::vector<SceneObject*>::const_iterator GetChildIteratotEnd() { return children.end(); };
 private:
+	SceneObject* parent;
+	Mesh* mesh;
+	std::vector<SceneObject*> children;
 };
 

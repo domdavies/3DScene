@@ -53,8 +53,11 @@ void HelloGL::InitObjects() {
 	----------------------------------------------------------------------
 	*/
 
+	root = new SceneObject();
+
 	//store data for lilith character
 	lilith = new Character(lilithMesh, nullptr, 0, 50, 0, 0);
+	root->AddChild(lilith);
 
 	//store data for creating gravestones
 	for (int i = 0; i < 10; i++)
@@ -62,10 +65,12 @@ void HelloGL::InitObjects() {
 		for (int j = 0; j < 10; j++)
 		{
 			graveStone[i][j] = new GraveStone(graveStoneMesh, bmptex, j * 6, 0, i * 3);
+			root->AddChild(graveStone[i][j]);
 		}
 	}
 
 	crypt = new Crypt(cryptMesh, CryptTex, 3, 5, -15);
+	root->AddChild(crypt);
 
 	healthBar = new HealthBar(HealthBarTex);
 
@@ -186,7 +191,7 @@ void HelloGL::Update()
 	glLightfv(GL_LIGHT0, GL_SPECULAR, &(_lightData->specular.x));
 	glLightfv(GL_LIGHT0, GL_POSITION, &(_lightPosition->x));
 
-	lilith->Update();
+	root->Update();
 	//the position of the lilith model is the position of the model without scaling, so to get the actual position (with scaling) multiply by the scale amount
 	gluLookAt(camera->eye.x, camera->eye.y, camera->eye.z, lilith->GetPosition().x * 0.1, lilith->GetPosition().y * 0.1, lilith->GetPosition().z * 0.1, camera->up.x, camera->up.y, camera->up.z);
 
@@ -237,11 +242,11 @@ void HelloGL::MouseButton(int button, int state, int x, int y) {
 		break;
 		//3 designates the middle mouse scroll forward
 	case 3:
-		//camera->eye.z -= 0.2f;
+		camera->eye.z -= 0.2f;
 		break;
 		//4 designates the middle mouse scroll backwards
 	case 4:
-		//camera->eye.z += 0.2f;
+		camera->eye.z += 0.2f;
 		break;
 	}
 }
@@ -309,6 +314,16 @@ void HelloGL::DrawString(const char* text, Vector3* position, Color* color)
 	glPopMatrix();
 }
 
+void HelloGL::DrawNode(SceneObject* n)
+{
+	n->Draw();
+	for (std::vector<SceneObject*>::const_iterator i = n->GetChildIteratotStart(); i != n->GetChildIteratotEnd(); ++i)
+	{
+		DrawNode(*i);
+		ResetMat();
+	}
+}
+
 void HelloGL::Display()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //clears the scene
@@ -325,20 +340,7 @@ void HelloGL::Display()
 	gluPerspective(45, 1, 1, 1000);
 	glMatrixMode(GL_MODELVIEW);
 
-	lilith->Draw();
-	ResetMat();
-	for (int i = 0; i < 10; i++)
-	{
-		for (int j = 0; j < 10; j++)
-		{
-			graveStone[i][j]->Draw();
-		}
-	}
-	ResetMat();
-
-	crypt->Draw();
-
-	ResetMat();
+	DrawNode(root);
 	/*
 	------------------------------------------------------------------------
 	*/
